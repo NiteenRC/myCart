@@ -16,22 +16,22 @@
 			<td>{{cart.productName}}</td>
 			<td><img data-ng-src="data:image/png;base64,{{cart.image}}"
 				style="width: 50px; height: 50px;"></td>
-			<td>{{cart.price}}</td>
+			<td>{{cart.price | currency:"&#8377;"}}</td>
 			<td><div data-ng-init="counter = 1">
 					<button data-ng-click="counter = counter - 1"
 						data-ng-disabled="counter==1">-</button>
 					<input type="number" data-ng-model="cart.qty=counter">
 					<button data-ng-click="counter = counter + 1">+</button>
 				</div></td>
-			<td>{{cart.price*cart.qty}}</td>
+			<td>{{cart.price*cart.qty | currency:"&#8377;"}}</td>
 		</tr>
 		<tr data-ng-show="carts.length!=0">
 			<td>Total:</td>
 			<td></td>
 			<td></td>
-			<td>{{getTotal('price')}}</td>
-			<td>{{getTotal('qty')}}</td>
-			<td>{{getTotal('price')*getTotal('qty')}}</td>
+			<td>{{getSubTotal('price') | currency:"&#8377;"}}</td>
+			<td>{{getSubTotal('qty')}}</td>
+			<td>{{getTotal() | currency:"&#8377;"}}</td>
 		</tr>
 	</table>
 	<p align="center" data-ng-show="carts.length==0">Your cart is

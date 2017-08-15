@@ -49,10 +49,6 @@ function productSelectController($scope,$rootScope, sharedService,$location) {
 		sharedService.getMethod(productUrl + productID).then(
 				function(response) {
 				   $scope.productItem = response.data;
-				   //$location.path('/productSelected');
-				   //calculateRating(response.data.ratings);
-				   //$location.path('/productSelected');
-				   // sharedService.store('productItem', response.data);
 				}, function(error) {
 					$scope.errorMessage = 'Error while getting: ' + error;
 					$scope.successMessage = '';

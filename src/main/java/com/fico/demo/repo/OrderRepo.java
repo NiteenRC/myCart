@@ -11,7 +11,7 @@ public interface OrderRepo extends JpaRepository<PurchaseOrder, Integer> {
 
 	PurchaseOrder findOneByOrderNo(String orderNo);
 
-	List<PurchaseOrder> findAllOrdersByUserID(int userId);
+	List<PurchaseOrder> findAllOrdersByUserIDOrderByOrderIDDesc(int userId);
 
 	List<PurchaseOrder> findAllOrdersByorderBookingDateBetween(Date fromDate, Date toDate);
 }

@@ -49,11 +49,11 @@ function checkoutController($scope, $rootScope, $uibModal, sharedService,
 				});
 	}
 
-	$scope.getTotal = function(val) {
+	$scope.getTotal = function() {
 		var total = 0;
-		angular.forEach($scope.carts, function(oldVal) {
-			total += oldVal[val];
+		angular.forEach($scope.carts, function(cart) {
+			total += (cart.price * cart.qty);
 		});
 		return total;
-	};
+	}
 }

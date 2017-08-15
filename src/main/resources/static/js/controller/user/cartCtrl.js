@@ -71,11 +71,19 @@ function cartController($scope, $rootScope, $uibModal, sharedService, $location)
 		});
 	}
 
-	$scope.getTotal = function(val) {
+	$scope.getSubTotal = function(val) {
 		var total = 0;
-		angular.forEach($scope.carts, function(oldVal) {
-			total += oldVal[val];
+		angular.forEach($scope.carts, function(cart) {
+			total += cart[val];
 		});
 		return total;
 	};
+	
+	$scope.getTotal = function() {
+		var total = 0;
+		angular.forEach($scope.carts, function(cart) {
+			total += (cart.price * cart.qty);
+		});
+		return total;
+	}
 }

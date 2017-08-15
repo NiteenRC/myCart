@@ -83,6 +83,6 @@ public class PurchaseOrderController {
 
 	@RequestMapping(value = WebUrl.ORDER_BY_USERID, method = RequestMethod.GET)
 	public ResponseEntity<List<PurchaseOrder>> findAllOrdersByUser(@PathVariable int userID) {
-		return new ResponseEntity<>(orderRepo.findAllOrdersByUserID(userID), HttpStatus.OK);
+		return new ResponseEntity<>(orderRepo.findAllOrdersByUserIDOrderByOrderIDDesc(userID), HttpStatus.OK);
 	}
 }

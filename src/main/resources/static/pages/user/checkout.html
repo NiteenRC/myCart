@@ -7,23 +7,33 @@
 				<div class="panel-heading">Purchase Order</div>
 				<div class="panel-body">
 					<div class="form-group" data-ng-repeat="cart in carts">
-						<div class="col-sm-4 col-xs-3">
+						<div class="col-sm-6 col-xs-3">
 							<img data-ng-src="data:image/png;base64,{{cart.image}}"
 								style="width: 50px; height: 50px;">
 						</div>
 						<div class="col-sm-6 col-xs-3">
-							<div class="col-xs-12">{{cart.productName}}</div>
-							<div class="col-xs-12">
-								<small>Quantity:<span>{{cart.qty}}</span></small>
+							<div>
+								<strong>Product Name:</strong> {{cart.productName}}
+							</div>
+							<div>
+								<strong>Quantity:</strong>{{cart.qty}}
+							</div>
+							<div>
+								<strong>Price</strong> {{cart.price | currency:"&#8377;"}}
 							</div>
 						</div>
-						<div class="col-sm-3 col-xs-3 text-right">
-							<strong>Price</strong>
-							<h6>{{cart.price | currency}}</h6>
+						<div class="col-sm-6 col-xs-3">
+							<div>
+								<strong>Sub Total:</strong>
+								<h6>{{(cart.qty*cart.price | currency:"&#8377;")}}</h6>
+							</div>
 						</div>
-						<div class="col-sm-3 col-xs-3 text-right">
-							<strong>Sub Total</strong>
-							<h6>{{(cart.qty*cart.price) | currency}}</h6>
+					</div>
+					<br>
+					<div class="col-sm-6 col-xs-3">
+						<div>
+							<strong>Total Amount:</strong>
+							<h6>{{(getTotal() | currency:"&#8377;")}}</h6>
 						</div>
 					</div>
 					<div align="center" data-ng-show="carts.length==0">
