@@ -1,5 +1,5 @@
-angular.module('myCart.directive_module.directiveService',
-		[ 'myCart.shared_module.sharedService' ]).directive('fileModel',
+angular.module('healthCare.directive_module.directiveService',
+		[ 'healthCare.shared_module.sharedService' ]).directive('fileModel',
 		fileModel);
 
 function fileModel(sharedService, $parse) {

@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="text-center">
+		<!--<input type="text" data-ng-disabled="true" data-ng-model="productData.productID" /> -->
+		<div class="input-item">
+			<input type="text" placeholder="Enter Product Name"
+				data-ng-model="doctorData.doctorName" />
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<textarea data-ng-model="doctorData.address" placeholder="Address"></textarea>
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<input type="text" placeholder="Enter Mobile"
+				data-ng-model="doctorData.mobileNumber" />
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<input type="text" placeholder="Enter Email"
+				data-ng-model="doctorData.email" />
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<select data-ng-model="item"
+				data-ng-options="item.categoryName for item in categories"><option
+					value="">--Select Category--</option></select>
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<input type="file" file-model="doctorData.image"
+				placeholder="Upload image" />
+		</div>
+		<div class="modal-footer">
+			<div class="row text-center">
+				<button class="
+				btn-info" data-ng-click="saveDoctor()">
+					Submit</button>
+				<!-- 				<button class="primary-btn" data-ng-click="clear()">Clear</button> -->
+				<!-- 				<button class="btn-warning" data-ng-click="cancel()">Cancel</button> -->
+			</div>
+		</div>
+	</div>
+</div>

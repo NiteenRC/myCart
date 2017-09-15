@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="text-center">
+		<div class="input-item">
+			<label>Patient Name</label> <input type="text"
+				data-ng-model="appointment.patientName" />
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<label>Category</label> <select data-ng-model="item"
+				data-ng-options="item.categoryName for item in categories"
+				data-ng-change="fetchDoctorsByCategoryID(item.categoryID)"><option
+					value="">--Select Category--</option></select>
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<label>Doctor</label> <select data-ng-model="doctor"
+				data-ng-options="doctor.doctorName for doctor in doctors"><option
+					value="">--Select Category--</option></select>
+		</div>
+		<br> <br>
+		<div class="input-item">
+			<p class="input-group">
+				<input type="text" class="form-control"
+					datepicker-popup="{{format}}" ng-model="appointment.dateTime" is-open="opened1"
+					datepicker-options="dateOptions" ng-required="true"
+					close-text="Close" ng-change="filterOrders()" /> <span
+					class="input-group-btn">
+					<button type="button" class="btn btn-default"
+						ng-click="open1($event)">
+						<i class="glyphicon glyphicon-calendar"></i>
+					</button>
+				</span>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<div class="row text-center">
+				<button class="
+				btn-info" data-ng-click="bookAppointment()">
+					Submit</button>
+				<!-- 				<button class="primary-btn" data-ng-click="clear()">Clear</button> -->
+				<!-- 				<button class="btn-warning" data-ng-click="cancel()">Cancel</button> -->
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,43 +1,31 @@
-angular.module('myCart').config(function($routeProvider) {
+angular.module('healthCare').config(function($routeProvider) {
 	$routeProvider.when('/home', {
-		templateUrl : 'pages/user/home.html',
+		templateUrl : 'pages/home.html',
 		controller : 'homeController'
 	}).when('/user', {
-		templateUrl : 'pages/user/user.html',
+		templateUrl : 'pages/user.html',
 		controller : 'userController'
-	}).when('/forgetPassword', {
-		templateUrl : 'pages/user/forgetPassword.html',
-		controller : 'forgetPasswordController'
+	}).when('/adminLogin', {
+		templateUrl : 'pages/admin/admin.html',
+		controller : 'adminController'
 	}).when('/category', {
-		templateUrl : 'pages/user/category.html',
-		controller : 'categoryController'
-	}).when('/productList', {
-		templateUrl : 'pages/user/productList.html',
-		controller : 'productController'
-	}).when('/productSelected', {
-		templateUrl : 'pages/user/productSelected.html',
-		controller : 'productSelectController'
-	}).when('/cart', {
-		templateUrl : 'pages/user/cart.html',
-		controller : 'cartController'
-	}).when('/orderSummary', {
-		templateUrl : 'pages/user/orderSummary.html',
-		controller : 'orderSummaryController'
-	}).when('/trackOrder', {
-		templateUrl : 'pages/user/trackOrder.html',
-		controller : 'orderSummaryController'
-	}).when('/checkout', {
-		templateUrl : 'pages/user/checkout.html',
-		controller : 'checkoutController'
-	}).when('/productManage', {
-		templateUrl : 'pages/admin/manage_product.html',
-		controller : 'productManageController'
-	}).when('/categoryManage', {
-		templateUrl : 'pages/admin/manage_category.html',
-		controller : 'categoryManageController'
-	}).when('/orderManage', {
-		templateUrl : 'pages/admin/manage_order.html',
-		controller : 'orderManageController'
+		templateUrl : 'pages/admin/category.html',
+		controller : 'adminController'
+	}).when('/add_doctor', {
+		templateUrl : 'pages/admin/add_doctor.html',
+		controller : 'adminController'
+	}).when('/view_doctors', {
+		templateUrl : 'pages/admin/view_doctors.html',
+		controller : 'adminController'
+	}).when('/doctorLogin', {
+		templateUrl : 'pages/doctor/doctor.html',
+		controller : 'doctorController'
+	}).when('/patientLogin', {
+		templateUrl : 'pages/patient/patient.html',
+		controller : 'patientController'
+	}).when('/bookAppointment', {
+		templateUrl : 'pages/patient/appointment.html',
+		controller : 'patientController'
 	}).otherwise({
 		redirectTo : '/home'
 	});

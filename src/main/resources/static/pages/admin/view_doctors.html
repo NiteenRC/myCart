@@ -1,0 +1,28 @@
+
+
+<div data-ng-init="getDoctors()">
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Doctor image</th>
+				<th>Doctor name</th>
+				<th>Mobile number</th>
+				<th>Address</th>
+				<th>email</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tr data-ng-repeat="doctor in doctors">
+			<td><img data-ng-src="data:image/png;base64,{{doctor.image}}"
+				style="width: 50px; height: 50px;"></td>
+			<td>{{doctor.doctorName}}</td>
+			<td>{{doctor.mobileNumber}}</td>
+			<td>{{doctor.address}}</td>
+			<td>{{doctor.email}}</td>
+			<td><button data-ng-click="removeDoctor(doctor.doctorID)">X</button>
+		</tr>
+	</table>
+	<p align="center" data-ng-show="categories.length==0">--No Data--</p>
+</div>
+
+<button onclick="window.location.href='#home'">Back to Home</button>

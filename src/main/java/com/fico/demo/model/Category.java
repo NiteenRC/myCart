@@ -4,12 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -20,34 +18,17 @@ public class Category {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "CATEGORY_ID", nullable = false)
 	private int categoryID;
-	//@Column(name = "CATEGORY_NAME", nullable = false)
 	private String categoryName;
-	//@Column(name = "CATEGORY_DESC")
 	private String categoryDesc;
-	@Lob
-	@Column(name = "IMAGE", length = Integer.MAX_VALUE)
-	private byte[] image;
-	//@Column(name = "ACTIVE", nullable = false)
-	private boolean active;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "category", cascade = CascadeType.ALL)
-	private Set<Product> products = new HashSet<>();
+	private Set<Doctor> products = new HashSet<>();
 
-	public Category() {
-	}
-
-	public Category(String categoryName, byte[] image) {
-		super();
-		this.categoryName = categoryName;
-		this.image = image;
-	}
-
-	public Set<Product> getProducts() {
+	public Set<Doctor> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Set<Product> products) {
+	public void setProducts(Set<Doctor> products) {
 		this.products = products;
 	}
 
@@ -59,14 +40,6 @@ public class Category {
 		this.categoryID = categoryID;
 	}
 
-	public String getCategoryName() {
-		return categoryName;
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-
 	public String getCategoryDesc() {
 		return categoryDesc;
 	}
@@ -75,19 +48,11 @@ public class Category {
 		this.categoryDesc = categoryDesc;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 }

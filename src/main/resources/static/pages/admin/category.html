@@ -1,0 +1,25 @@
+
+<div class="container">
+	<input type="text" data-ng-model="categoryData.categoryName"
+		placeholder="Category Name"> <br> <br>
+	<button type="button" data-ng-click="addCategory()">Submit</button>
+</div>
+<br>
+
+<div>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Category Name</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tr data-ng-repeat="cat in categories">
+			<td>{{cat.categoryName}}</td>
+			<td><button data-ng-click="removeCategory(cat.categoryID)">X</button>
+		</tr>
+	</table>
+	<p align="center" data-ng-show="categories.length==0">--No Data--</p>
+</div>
+
+<button onclick="window.location.href='#home'">Back to Home</button>

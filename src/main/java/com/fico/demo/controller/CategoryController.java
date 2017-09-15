@@ -1,6 +1,5 @@
 package com.fico.demo.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,18 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fico.demo.exception.CustomErrorType;
 import com.fico.demo.model.Category;
 import com.fico.demo.repo.CategoryRepo;
-import com.fico.demo.repo.ProductRepo;
-import com.fico.demo.util.Utility;
+import com.fico.demo.repo.DoctorRepo;
 import com.fico.demo.util.WebUrl;
 
 @RestController
@@ -32,41 +28,16 @@ public class CategoryController {
 	public CategoryRepo categoryRepo;
 
 	@Autowired
-	public ProductRepo productRepo;
+	public DoctorRepo doctorRepo;
 
 	@RequestMapping(value = WebUrl.CATEGORY, method = RequestMethod.POST)
-	public ResponseEntity<Category> addCategory(@RequestParam("categoryData") String categoryData,
-			@RequestParam("file") MultipartFile file) {
-		Category cat = new Category();
-		try {
-			byte[] bytes = file.getBytes();
-			cat.setImage(bytes);
-		} catch (IOException e) {
-			logger.error("File is failed to save", e);
-			return new ResponseEntity("File is failed to save", HttpStatus.BAD_REQUEST);
-		}
-
-		JsonNode jn = Utility.jsonToObject(categoryData);
-
-		if (jn == null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-
-		String categoryName = jn.get("categoryName").asText();
-
-		Category category1 = categoryRepo.findByCategoryName(categoryName);
-		if (category1 != null) {
-			return new ResponseEntity(new CustomErrorType("Category name already exist!!"), HttpStatus.NOT_FOUND);
-		}
-
-		cat.setCategoryName(categoryName);
-		cat.setActive(true);
-		Category category = categoryRepo.save(cat);
-
-		if (category == null) {
+	public ResponseEntity<Category> addCategory(@RequestBody Category category) {
+		System.out.println("dddddd "+category.getCategoryName());
+		Category cat = categoryRepo.save(category);
+		if (cat == null) {
 			return new ResponseEntity(new CustomErrorType("Category is not saved"), HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<>(category, HttpStatus.CREATED);
+		return new ResponseEntity<>(cat, HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = WebUrl.CATEGORY + "/{categoryID}", method = RequestMethod.DELETE)

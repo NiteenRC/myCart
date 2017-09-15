@@ -1,4 +1,4 @@
-angular.module('myCart.shared_module.sharedService', []).factory(
+angular.module('healthCare.shared_module.sharedService', []).factory(
 		'sharedService', sharedService);
 
 function sharedService($http) {
